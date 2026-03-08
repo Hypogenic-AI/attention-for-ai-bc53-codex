@@ -1,0 +1,127 @@
+{
+  "1409.0473_neural_mt_align_translate": {
+    "chunk1_snippet": "Published as a conference paper at ICLR 2015 NEURAL MACHINE TRANSLATION BY JOINTLY LEARNING TO ALIGN AND TRANSLATE Dzmitry Bahdanau Jacobs University Bremen, Germany KyungHyun Cho Y oshua Bengio \u2217 Universit\u00b4e de Montr\u00b4eal ABSTRACT Neural machine translation is a recently proposed approach to machine transla- tion. Unlike the traditional statistical machine translation, the neural machine translation aims at building a single neural network that can be jointly tuned to maximize the translation performance. The models proposed recently for neu- ral machine translation often belong to a family of encoder\u2013decoders and encode a source sentence into a \ufb01xed-length vector from which a decoder generates a translation. In this paper, we conjecture that the use of a \ufb01xed-length vector is a bottleneck in improving the performance of this basic encoder\u2013decoder architec- ture, and propose to extend th"
+  },
+  "1706.03762_attention_is_all_you_need": {
+    "chunk1_snippet": "Provided proper attribution is provided, Google hereby grants permission to reproduce the tables and figures in this paper solely for use in journalistic or scholarly works. Attention Is All You Need Ashish Vaswani\u2217 Google Brain avaswani@google.com Noam Shazeer\u2217 Google Brain noam@google.com Niki Parmar\u2217 Google Research nikip@google.com Jakob Uszkoreit\u2217 Google Research usz@google.com Llion Jones\u2217 Google Research llion@google.com Aidan N. Gomez\u2217 \u2020 University of Toronto aidan@cs.toronto.edu \u0141ukasz Kaiser \u2217 Google Brain lukaszkaiser@google.com Illia Polosukhin\u2217 \u2021 illia.polosukhin@gmail.com Abstract The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transfo",
+    "deep_total_chars": 39626,
+    "datasets": [
+      "WMT 2014 English- to-German translation task, improving over the existing best results, including ensembles, by over 2 BLEU.",
+      "WMT 2014 English-to-French translation task, our model establishes a new single-model state-of-the-art BLEU score of 41.",
+      "WMT 2014 English-German dataset consisting of about 4.",
+      "WMT 2014 English-French dataset consisting of 36M sentences and split tokens into a 32000 word-piece vocabulary [38].",
+      "WMT 2014 English-to-German translation task, the big transformer model (Transformer (big) in Table 2) outperforms the best previously reported models (including ensembles) by more than 2.",
+      "WMT 2014 English-to-French translation task, our big model achieves a BLEU score of 41."
+    ],
+    "metrics": [
+      "BLEU on the WMT 2014 English- to-German translation task, improving over the existing best results, including ensembles, by over 2 BLEU.",
+      "BLEU score of 41.",
+      "BLEU scores than previous state-of-the-art models on the English-to-German and English-to-French newstest2014 tests at a fraction of the training cost.",
+      "BLEU Training Cost (FLOPs) EN-DE EN-FR EN-DE EN-FR ByteNet [18] 23.",
+      "perplexity, as the model learns to be more unsure, but improves accuracy and BLEU score.",
+      "BLEU, establishing a new state-of-the-art BLEU score of 28."
+    ],
+    "baselines": [],
+    "results": [
+      "state-of-the-art BLEU score of 41.",
+      "improvements in computational efficiency through factorization tricks [21] and conditional computation [32], while also improving model performance in case of the latter.",
+      "outperforms dot product attention without scaling for larger values of dk [3].",
+      "state-of-the-art models in machine translations, such as word-piece [38] and byte-pair [31] representations.",
+      "state-of-the-art models on the English-to-German and English-to-French newstest2014 tests at a fraction of the training cost.",
+      "outperforms the best previously reported models (including ensembles) by more than 2."
+    ]
+  },
+  "1706.06978_deep_interest_network_ctr": {
+    "chunk1_snippet": "Deep Interest Network for Click-Through Rate Prediction Guorui Zhou, Chengru Song, Xiaoqiang Zhu Ying Fan, Han Zhu, Xiao Ma, Yanghui Yan, Junqi Jin, Han Li, Kun Gai Alibaba Group {guorui.xgr,chengru.scr,xiaoqiang.zxq,zhuhan.zh,fanying.fy,maxiao.ma,yanghui.yyh,junqi.jjq,lihan.hl,jingshi.gk}@ alibaba-inc.com ABSTRACT Click-through rate prediction is an essential task in industrial applications, such as online advertising. Recently deep learning based models have been proposed, which follow a similar Embed- ding&MLP paradigm. In these methods large scale sparse input features are first mapped into low dimensional embedding vectors, and then transformed into fixed-length vectors in a group-wise manner, finally concatenated together to fed into a multilayer per- ceptron (MLP) to learn the nonlinear relations among features. In this way, user features are compressed into a fixed-length repre- ",
+    "deep_total_chars": 50736,
+    "datasets": [
+      "datasets as well as an Alibaba real production dataset with over 2 billion samples demonstrate the effectiveness of pro- posed approaches, which achieve superior performance compared with state-of-the-art methods.",
+      "datasets.",
+      "datasets is available on GitHub: https://github.",
+      "datasets, evaluation metric, experimental setup, model comparison and the corresponding analysis.",
+      "datasets with user behaviors as well as a dataset collected from the display advertising system in Alibaba demonstrate the effectiveness of proposed approach which outperforms state-of-the-art methods on the CTR prediction task.",
+      "datasets and experiment codes are made available1."
+    ],
+    "metrics": [
+      "AUC is a widely used metric[8].",
+      "AUC is introduced in [7, 13] which measures the goodness of intra-user order by averaging AUC over users and is shown to be more relevant to online performance in display advertising system.",
+      "AUC.",
+      "AUC = \u00cdn i =1 #impr ession i \u00d7 AUCi\u00cdn i =1 #impr ession i , (10) where n is the number of users, #impression i and AUCi are the number of impressions and AUC corresponding to the i-th user.",
+      "AUC is 0.",
+      "AUC(measured model) \u2212 0."
+    ],
+    "baselines": [
+      "compared with state-of-the-art methods.",
+      "Compared with commonly used logistic regression model [19], these deep learning methods can reduce a lot of feature engineering jobs and enhance the model capability greatly.",
+      "baseline.",
+      "baseline for our model comparison.",
+      "compared with other deep networks.",
+      "compared without it."
+    ],
+    "results": [
+      "state-of-the-art methods.",
+      "improvement to the business.",
+      "improvement.",
+      "outperforms state-of-the-art methods on the CTR prediction task.",
+      "improvement over models.",
+      "improvement, among which our proposed mini-batch aware regularization performs best."
+    ]
+  },
+  "1808.09781_sasrec": {
+    "chunk1_snippet": "Self-Attentive Sequential Recommendation Wang-Cheng Kang, Julian McAuley UC San Diego {wckang,jmcauley}@ucsd.edu Abstract\u2014Sequential dynamics are a key feature of many modern recommender systems, which seek to capture the \u2018con- text\u2019 of users\u2019 activities on the basis of actions they have performed recently. To capture such patterns, two approaches have proliferated: Markov Chains (MCs) and Recurrent Neural Networks (RNNs). Markov Chains assume that a user\u2019s next action can be predicted on the basis of just their last (or last few) actions, while RNNs in principle allow for longer-term semantics to be uncovered. Generally speaking, MC-based methods perform best in extremely sparse datasets, where model parsimony is critical, while RNNs perform better in denser datasets where higher model complexity is affordable. The goal of our work is to balance these two goals, by proposing a self-atte",
+    "deep_total_chars": 54477,
+    "datasets": [
+      "datasets, where model parsimony is critical, while RNNs perform better in denser datasets where higher model complexity is affordable.",
+      "datasets.",
+      "datasets with various density, and uncovers meaningful patterns in activity sequences.",
+      "datasets.",
+      "dataset sparsity, where model performance aligns closely with the patterns described above.",
+      "datasets, while focusing on more recent activities on sparse datasets."
+    ],
+    "metrics": [
+      "NDCG@10 0.",
+      "NDCG@10 0.",
+      "NDCG@10 0.",
+      "NDCG@10 0.",
+      "NDCG@10, to evaluate recommendation performance [14], [19].",
+      "NDCG@10 is a position-aware metric which assigns larger weights on higher positions."
+    ],
+    "baselines": [
+      "baselines.",
+      "baselines.",
+      "baseline that ranks items according to their popularity (i.",
+      "baselines among those above, we omit comparison against them.",
+      "baselines on both sparse and dense datasets, and gains 6.",
+      "baseline."
+    ],
+    "results": [
+      "outperforms various state-of-the-art sequential models (including MC/CNN/RNN-based approaches) on both sparse and dense datasets.",
+      "outperform simpler baselines.",
+      "outperforms state-of-the- art MC/CNN/RNN-based sequential recommendation methods on several benchmark datasets.",
+      "state-of-the-art performance and ef\ufb01ciency on machine translation tasks which had previously been dominated by RNN/CNN-based approaches [32], [33].",
+      "state-of-the-art \ufb01rst-order sequential recommendation method which models each user as a translation vector to capture the transition from the current item to the next.",
+      "state-of-the-art sequential recommendation performance."
+    ]
+  },
+  "1810.04805_bert": {
+    "chunk1_snippet": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding Jacob Devlin Ming-Wei Chang Kenton Lee Kristina Toutanova Google AI Language {jacobdevlin,mingweichang,kentonl,kristout}@google.com Abstract We introduce a new language representa- tion model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language repre- sentation models (Peters et al., 2018a; Rad- ford et al., 2018), BERT is designed to pre- train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a re- sult, the pre-trained BERT model can be \ufb01ne- tuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial task- speci\ufb01c architecture modi\ufb01cations. BERT is conceptual"
+  },
+  "1904.06690_bert4rec": {
+    "chunk1_snippet": "BERT4Rec: Sequential Recommendation with Bidirectional Encoder Representations from Transformer Fei Sun, Jun Liu, Jian Wu, Changhua Pei, Xiao Lin, Wenwu Ou, and Peng Jiang Alibaba Group, Beijing, China {ofey.sf,yanhan.lj,joshuawu.wujian,changhua.pch,hc.lx,santong.oww,jiangpeng.jp}@alibaba-inc.com ABSTRACT Modeling users\u2019 dynamic preferences from their historical behav- iors is challenging and crucial for recommendation systems. Previ- ous methods employ sequential neural networks to encode users\u2019 historical interactions from left to right into hidden representations for making recommendations. Despite their effectiveness, we argue that such left-to-right unidirectional models are sub-optimal due to the limitations including: a) unidirectional architectures restrict the power of hidden representation in users\u2019 behavior sequences; b) they often assume a rigidly ordered sequence which is no"
+  },
+  "2005.14165_gpt3": {
+    "chunk1_snippet": "Language Models are Few-Shot Learners Tom B. Brown\u2217 Benjamin Mann\u2217 Nick Ryder\u2217 Melanie Subbiah\u2217 Jared Kaplan\u2020 Prafulla Dhariwal Arvind Neelakantan Pranav Shyam Girish Sastry Amanda Askell Sandhini Agarwal Ariel Herbert-Voss Gretchen Krueger Tom Henighan Rewon Child Aditya Ramesh Daniel M. Ziegler Jeffrey Wu Clemens Winter Christopher Hesse Mark Chen Eric Sigler Mateusz Litwin Scott Gray Benjamin Chess Jack Clark Christopher Berner Sam McCandlish Alec Radford Ilya Sutskever Dario Amodei OpenAI Abstract Recent work has demonstrated substantial gains on many NLP tasks and benchmarks by pre-training on a large corpus of text followed by \ufb01ne-tuning on a speci\ufb01c task. While typically task-agnostic in architecture, this method still requires task-speci\ufb01c \ufb01ne-tuning datasets of thousands or tens of thousands of examples. By contrast, humans can generally perform a new language task from only a f"
+  },
+  "2006.11239_ddpm": {
+    "chunk1_snippet": "Denoising Diffusion Probabilistic Models Jonathan Ho UC Berkeley jonathanho@berkeley.edu Ajay Jain UC Berkeley ajayj@berkeley.edu Pieter Abbeel UC Berkeley pabbeel@cs.berkeley.edu Abstract We present high quality image synthesis results using diffusion probabilistic models, a class of latent variable models inspired by considerations from nonequilibrium thermodynamics. Our best results are obtained by training on a weighted variational bound designed according to a novel connection between diffusion probabilistic models and denoising score matching with Langevin dynamics, and our models nat- urally admit a progressive lossy decompression scheme that can be interpreted as a generalization of autoregressive decoding. On the unconditional CIFAR10 dataset, we obtain an Inception score of 9.46 and a state-of-the-art FID score of 3.17. On 256x256 LSUN, we obtain sample quality similar to Progr"
+  },
+  "2010.11929_vision_transformer": {
+    "chunk1_snippet": "Published as a conference paper at ICLR 2021 AN IMAGE IS WORTH 16 X16 W ORDS : TRANSFORMERS FOR IMAGE RECOGNITION AT SCALE Alexey Dosovitskiy\u2217,\u2020, Lucas Beyer\u2217, Alexander Kolesnikov\u2217, Dirk Weissenborn\u2217, Xiaohua Zhai\u2217, Thomas Unterthiner, Mostafa Dehghani, Matthias Minderer, Georg Heigold, Sylvain Gelly, Jakob Uszkoreit, Neil Houlsby\u2217,\u2020 \u2217equal technical contribution,\u2020equal advising Google Research, Brain Team {adosovitskiy, neilhoulsby}@google.com ABSTRACT While the Transformer architecture has become the de-facto standard for natural language processing tasks, its applications to computer vision remain limited. In vision, attention is either applied in conjunction with convolutional networks, or used to replace certain components of convolutional networks while keeping their overall structure in place. We show that this reliance on CNNs is not necessary and a pure transformer applied dire"
+  },
+  "2112.10752_latent_diffusion_models": {
+    "chunk1_snippet": "High-Resolution Image Synthesis with Latent Diffusion Models Robin Rombach1 * Andreas Blattmann1\u2217 Dominik Lorenz1 Patrick Esser Bj\u00a8orn Ommer1 1Ludwig Maximilian University of Munich & IWR, Heidelberg University, Germany Runway ML https://github.com/CompVis/latent-diffusion Abstract By decomposing the image formation process into a se- quential application of denoising autoencoders, diffusion models (DMs) achieve state-of-the-art synthesis results on image data and beyond. Additionally, their formulation al- lows for a guiding mechanism to control the image gen- eration process without retraining. However, since these models typically operate directly in pixel space, optimiza- tion of powerful DMs often consumes hundreds of GPU days and inference is expensive due to sequential evalu- ations. To enable DM training on limited computational resources while retaining their quality and \ufb02exibil"
+  },
+  "2205.14135_flashattention": {
+    "chunk1_snippet": "FlashAttention: Fast and Memory-E\ufb03cient Exact Attention with IO-Awareness Tri Daoy, Daniel Y. Fuy, Stefano Ermony, Atri Rudraz, and Christopher R\u00e9y yDepartment of Computer Science, Stanford University zDepartment of Computer Science and Engineering, University at Bu\ufb00alo, SUNY {trid,danfu}@cs.stanford.edu, ermon@stanford.edu, atri@buffalo.edu, chrismre@cs.stanford.edu June 24, 2022 Abstract Transformers are slow and memory-hungry on long sequences, since the time and memory complexity of self-attention are quadratic in sequence length. Approximate attention methods have attempted to address this problem by trading o\ufb00 model quality to reduce the compute complexity, but often do not achieve wall-clock speedup. We argue that a missing principle is making attention algorithmsIO- aware\u2014accounting for reads and writes between levels of GPU memory. We proposeFlashAttention, an IO-aware exact att"
+  }
+}

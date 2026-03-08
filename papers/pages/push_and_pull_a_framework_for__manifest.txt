@@ -1,0 +1,9 @@
+PDF: papers/push_and_pull_a_framework_for_.pdf
+Total pages: 11
+Pages per chunk: 3
+
+Chunks:
+  push_and_pull_a_framework_for__chunk_001.pdf: pages 1-3
+  push_and_pull_a_framework_for__chunk_002.pdf: pages 4-6
+  push_and_pull_a_framework_for__chunk_003.pdf: pages 7-9
+  push_and_pull_a_framework_for__chunk_004.pdf: pages 10-11

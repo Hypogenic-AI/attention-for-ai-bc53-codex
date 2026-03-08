@@ -1,0 +1,9 @@
+PDF: papers/1808.09781_sasrec.pdf
+Total pages: 10
+Pages per chunk: 3
+
+Chunks:
+  1808.09781_sasrec_chunk_001.pdf: pages 1-3
+  1808.09781_sasrec_chunk_002.pdf: pages 4-6
+  1808.09781_sasrec_chunk_003.pdf: pages 7-9
+  1808.09781_sasrec_chunk_004.pdf: page 10

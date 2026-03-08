@@ -1,0 +1,524 @@
+You are an academic paper writer. Generate a complete NEURIPS style paper
+based on the experiment results provided.
+
+════════════════════════════════════════════════════════════════════════════════
+                         IMPORTANT: BEFORE YOU START
+════════════════════════════════════════════════════════════════════════════════
+
+Before writing any content, you MUST complete these steps:
+
+1. READ THE SKILL: Review the paper-writer skill at .gemini/skills/paper-writer/SKILL.md
+2. READ THE STYLE GUIDE: Study templates/paper_writing/lab_style_guide.md carefully
+3. REVIEW EXAMPLES: Browse paper_examples/ for formatting and language patterns:
+   - Look at sections/1.introduction.tex for language style
+   - Look at tables/*.tex for table formatting
+   - Look at commands/*.tex for macro usage
+4. VERIFY COMMAND TEMPLATES: Command templates (math.tex, general.tex, macros.tex) are pre-copied to paper_draft/commands/
+
+CRITICAL: Reference example papers for FORMATTING and LANGUAGE STYLE only.
+Do NOT copy content, phrasing, or narrative structure from the example papers.
+The examples are in a different research domain - focus only on presentation style.
+
+════════════════════════════════════════════════════════════════════════════════
+                            EXPERIMENT REPORT
+════════════════════════════════════════════════════════════════════════════════
+
+# Research Report: Attention is All You Need for the Internet Field
+
+## 1. Executive Summary
+This research investigates the hypothesis that the attention mechanism is a fundamental principle across both artificial intelligence (Transformer-based models) and the Internet field (Attention Economy, Recommendation, CTR). Our experiments demonstrate that attention-based models consistently match or outperform non-attention baselines in critical Internet tasks such as sequential recommendation and Click-Through Rate (CTR) prediction. Furthermore, we find that lower attention entropy (more focused attention) correlates with higher prediction correctness, providing empirical evidence that attention serves as a critical information bottleneck in both machine and digital ecosystems.
+
+## 2. Goal
+The primary goal was to test if the &#34;Attention is All You Need&#34; paradigm extends beyond language modeling to the broader Internet field. We hypothesized that:
+1. Attention-based models outperform non-attention models in Internet-specific tasks.
+2. The mathematical focus of attention (measured by entropy) is linked to the success of these systems.
+
+## 3. Data Construction
+
+### Dataset Description
+- **MovieLens Ratings**: A dataset of user-movie interactions. We used 891,382 ratings from 11,923 users.
+- **Criteo CTR**: A standard dataset for online advertising. We used a 20,000-row subset for CTR prediction.
+
+### Example Samples
+**MovieLens:**
+| user_id | movie_id | rating | title |
+|---------|----------|--------|-------|
+| 11923   | 2307     | 3.5    | Inside Out (2015) |
+
+**Criteo:**
+| label | I1-I13 (Dense) | C1-C26 (Categorical) |
+|-------|----------------|----------------------|
+| 1     | [0.0, 0.008, ...]| [18, 1479, ...]      |
+
+### Preprocessing Steps
+1. **MovieLens**: Grouped by user and sorted by row index to create interaction sequences. Sequences shorter than 5 items were filtered.
+2. **Criteo**: Missing values filled (0 for dense, &#34;-1&#34; for categorical). Dense features normalized via MinMaxScaler; categorical features encoded via LabelEncoder.
+
+## 4. Experiment Description
+
+### Methodology
+We conducted two main experiments:
+1. **Sequential Recommendation (MovieLens)**: Comparing a Transformer-based model (Self-Attention) with a Gated Recurrent Unit (GRU).
+2. **CTR Prediction (Criteo)**: Comparing an Attention-based MLP (Feature Attention) with a plain MLP.
+
+### Implementation Details
+- **Tools**: PyTorch, Pandas, Scikit-learn.
+- **Models**:
+    - `TransformerModel`: Multi-head self-attention with positional embeddings.
+    - `GRUModel`: Standard Gated Recurrent Unit.
+    - `AttentionMLP`: Self-attention over feature embeddings followed by an MLP.
+    - `MLP`: Feature embedding concatenation followed by an MLP.
+
+### Experimental Protocol
+- **Epochs**: 3 (MovieLens), 5 (Criteo).
+- **Optimizer**: Adam (lr=0.001).
+- **Device**: CUDA (NVIDIA GPU).
+
+## 5. Result Analysis
+
+### Key Findings
+1. **Attention Economy performance**: On Criteo CTR, the **Attention-based MLP (0.7740)** significantly outperformed the **Plain MLP (0.7512)**.
+2. **Sequential Attention**: On MovieLens, the **Transformer (0.2509)** matched the performance of the **GRU (0.2525)**, showing that attention is competitive even with recurrent models for sequential patterns.
+3. **Entropy-Correctness Link**: Analysis of the Transformer attention maps revealed that **correct predictions had lower mean entropy (1.4107)** than incorrect ones (1.4285), suggesting that the model&#39;s ability to &#34;focus&#34; its attention is a predictor of accuracy.
+
+### Tables
+| Task | Metric | Non-Attention (Baseline) | Attention-Based (Ours) |
+|------|--------|--------------------------|------------------------|
+| MovieLens Seq | Hit@10 | 0.2525 (GRU)             | 0.2509 (Transformer)   |
+| Criteo CTR | Val Acc | 0.7512 (MLP)             | **0.7740** (AttentionMLP) |
+
+### Visualizations
+- `results/plots/movielens_entropy.png`: Shows that correct predictions cluster around lower entropy values.
+- `results/plots/criteo_feature_attention.png`: Visualizes how the model weights different categorical features (e.g., C14, C17) differently based on their importance to the prediction.
+
+### Surprises and Insights
+The stability of the Attention-based MLP on Criteo was notable. While the plain MLP showed signs of overfitting (dropping validation accuracy), the attention mechanism seemed to regularize the model by focusing on the most relevant features.
+
+## 6. Conclusions
+The attention mechanism indeed serves as a cross-domain bottleneck. In AI models, it selects relevant tokens; in Internet products, it selects relevant content/ads. The empirical link between low attention entropy and prediction success supports the theoretical claim that &#34;Attention is All You Need&#34; to filter and focus information in both neural networks and digital economies.
+
+## 7. Next Steps
+- **Scaling**: Test on full 20M MovieLens and 1B Criteo datasets.
+- **Architectural Depth**: Experiment with hybrid Attention-Recurrent models (e.g., Mamba) to capture both long-term and short-term attention dynamics.
+- **User Agency**: Integrate &#34;Attentional Agency&#34; metrics to measure how attention mechanisms impact user control vs. platform push.
+
+
+════════════════════════════════════════════════════════════════════════════════
+                            RESEARCH PLAN
+════════════════════════════════════════════════════════════════════════════════
+
+# Research Plan: Attention as a Cross-Domain Bottleneck in AI and Internet Systems
+
+## Motivation &amp; Novelty Assessment
+
+### Why This Research Matters
+Attention is a scarce resource in both machine intelligence and human-computer systems, so testing whether a shared attention principle predicts performance across domains has practical value for model design, ranking systems, and product optimization. If validated, this supports a unified framing that connects generative AI architecture choices with Internet traffic allocation behavior. That can improve how we design, evaluate, and govern attention-driven systems.
+
+### Gap in Existing Work
+From `literature_review.md`, prior work demonstrates attention effectiveness in separate silos (transformers, diffusion conditioning, recommender/CTR), but does not empirically test a single cross-domain claim with a common experimental protocol and comparable metrics. In particular, evidence linking internal model attention behavior to external attention-allocation outcomes is limited.
+
+### Our Novel Contribution
+We run a unified empirical study across two local datasets representing (1) AI language understanding and (2) Internet attention outcomes, comparing attention vs non-attention baselines under consistent statistical analysis. We additionally test whether attention concentration (entropy-based) is associated with better predictive performance, providing a measurable bridge between mechanism and outcome.
+
+### Experiment Justification
+- Experiment 1: AG News model comparison (non-attention vs transformer attention). Needed to test whether attention-centric models outperform non-attention baselines in a controlled NLP task.
+- Experiment 2: Online News Popularity model comparison (MLP vs feature self-attention). Needed to test whether attention-style weighting improves prediction of user attention proxies in Internet content outcomes.
+- Experiment 3: Attention concentration analysis. Needed to test whether the *quality/distribution* of learned attention links to prediction correctness, supporting mechanism-level interpretation beyond raw score improvements.
+
+## Research Question
+Does attention function as a unifying bottleneck mechanism across AI and Internet systems, such that attention-based models outperform non-attention baselines and attention concentration patterns are associated with stronger outcomes?
+
+## Background and Motivation
+The hypothesis proposes that transformer self-attention, generative AI conditioning, and Internet ranking/CTR systems share one mathematical logic: selective weighting over limited information budget. Literature in this workspace supports each component independently (Vaswani, DIN, SASRec, BERT4Rec, LDM), but lacks an integrated experimental test with shared evaluation logic.
+
+## Hypothesis Decomposition
+- H1 (AI task): On AG News, an attention-based model (DistilBERT) outperforms a non-attention baseline (TF-IDF + Logistic Regression) on macro-F1 and accuracy.
+- H2 (Internet proxy task): On Online News Popularity, a feature self-attention network outperforms a similarly sized MLP on AUC, F1, and NDCG@10 for high-share prediction.
+- H3 (Mechanism link): Lower attention entropy (more concentrated attention) is associated with improved correctness/confidence in both domains.
+
+Independent variables:
+- Model family (`non_attention`, `attention`)
+- Dataset/task (`ag_news`, `online_news_popularity`)
+- Random seed (42, 43, 44)
+
+Dependent variables:
+- AG News: accuracy, macro-F1
+- Online News: ROC-AUC, F1, NDCG@10
+- Mechanism: attention entropy, correlation with correctness/confidence
+
+Alternative explanations:
+- Parameter count and pretraining, not attention per se
+- Feature engineering effects on tabular data
+- Class imbalance artifacts
+
+Mitigations:
+- Report model sizes and training settings
+- Use standardized preprocessing and consistent splits
+- Use multi-seed averages with significance tests
+
+## Proposed Methodology
+
+### Approach
+A two-domain comparative benchmark using pre-gathered datasets and lightweight reproducible models. We prioritize feasible, replicable CPU/GPU execution in one session and use statistical tests plus effect sizes.
+
+### Experimental Steps
+1. Environment and reproducibility setup (venv, dependency lock, seeds, logging).
+2. Data loading and quality checks for both datasets.
+3. AG News baseline training: TF-IDF + Logistic Regression.
+4. AG News attention model: DistilBERT fine-tuning (small subset if compute constrained).
+5. Online News preprocessing and binary target construction (`shares` above median).
+6. Online News baseline: MLP classifier.
+7. Online News attention model: feature self-attention classifier.
+8. Multi-seed evaluation and bootstrap confidence intervals.
+9. Statistical tests (paired t-test/Wilcoxon based on normality checks).
+10. Attention entropy analysis and failure-case analysis.
+
+### Baselines
+- AG News baseline: TF-IDF + Logistic Regression (strong classic non-attention baseline).
+- Online News baseline: MLP classifier (capacity-matched non-attention neural baseline).
+
+### Evaluation Metrics
+- Accuracy and macro-F1 for AG News (class-balanced performance visibility).
+- ROC-AUC, F1, and NDCG@10 for Online News (classification + ranking relevance to attention allocation).
+- Attention entropy and Pearson/Spearman correlations with correctness/confidence.
+
+### Statistical Analysis Plan
+- Significance threshold: alpha = 0.05.
+- For model comparisons across seeds: paired test per metric.
+- Normality check via Shapiro-Wilk on paired differences.
+- If normal: paired t-test; if non-normal: Wilcoxon signed-rank.
+- Effect sizes: Cohen&#39;s d (paired) and Cliff&#39;s delta (non-parametric robustness where useful).
+- 95% bootstrap confidence intervals (1,000 resamples) for key metrics.
+
+## Expected Outcomes
+Support for hypothesis:
+- Attention models outperform non-attention baselines on both domains.
+- Attention entropy shows consistent relationship with better outcomes.
+
+Refutation/partial support:
+- Gains only in one domain, or no clear mechanism link in entropy analysis.
+
+## Timeline and Milestones
+- Phase A (20 min): setup, data validation, EDA
+- Phase B (40 min): implement/train AG News models
+- Phase C (40 min): implement/train Online News models
+- Phase D (25 min): statistical analysis + plots
+- Phase E (25 min): REPORT.md + README.md + validation
+- Buffer (30%): debugging and reruns
+
+## Potential Challenges
+- No GPU available: reduce DistilBERT sample size and epochs.
+- Runtime constraints: use stratified subsampling while preserving test integrity.
+- Attention extraction complexity: rely on model outputs with attention tensors and standardized entropy computation.
+- Confounding from pretraining: discuss as limitation and include parameter/context transparency.
+
+## Success Criteria
+- End-to-end reproducible pipeline runs from command line.
+- `results/` contains raw metrics, plots, and per-seed outputs.
+- REPORT documents statistical tests and mechanism analysis.
+- At least one cross-domain positive result and one clearly discussed limitation.
+
+
+════════════════════════════════════════════════════════════════════════════════
+                          LITERATURE REVIEW
+════════════════════════════════════════════════════════════════════════════════
+
+# Literature Review: Attention is All You Need for the Internet Field
+
+## Research Area Overview
+The research explores the hypothesis that the attention mechanism, originally popularized by Transformers in Large Language Models (LLMs), is a fundamental principle not only for artificial intelligence but also for the entire Generative AI and Internet field. This field is characterized by the &#34;Attention Economy,&#34; where digital products compete for the limited cognitive resources of users.
+
+## Key Papers
+
+### 1. An attention economy model of co-evolution between content quality and audience selectivity (2026)
+- **Authors**: M. Chujyo, I. Okada, H. Yamamoto, D. Lim, F. Toriumi
+- **Key Contribution**: Develops a minimal mathematical framework (two-population evolutionary game) to explain how content quality and audience selectivity co-evolve under limited attention capacity.
+- **Methodology**: Replicator dynamics, mean-field approximation.
+- **Relevance**: Provides the mathematical bridge between &#34;attention capacity&#34; and the survival of high-quality content in digital ecosystems.
+
+### 2. Push and Pull: A Framework for Measuring Attentional Agency on Digital Platforms (2024)
+- **Authors**: Z. Wojtowicz, S. Jain, N. Vincent
+- **Key Contribution**: Defines &#34;attentional agency&#34; and a formal framework for measuring it. Distinguishes between &#34;Pull&#34; (value to user) and &#34;Push&#34; (value to advocates/advertisers).
+- **Relevance**: Connects the technical mediation of information (by foundation models and ranking systems) to the strategic objectives of platforms.
+
+### 3. Gated Rotary-Enhanced Linear Attention for Long-term Sequential Recommendation (2025)
+- **Authors**: J. Hu, W. Zhou, et al.
+- **Key Contribution**: Introduces RecGRELA, a model using rotary-enhanced linear attention for processing long-term user behavior sequences.
+- **Methodology**: Linear attention, rotary position embeddings, rank modulation.
+- **Relevance**: Demonstrates how technical attention mechanisms are optimized for the core &#34;Internet&#34; task of sequential recommendation.
+
+### 4. PANTHER: Generative Pretraining Beyond Language for Sequential User Behavior Modeling (2025)
+- **Authors**: WeChat Pay Team
+- **Key Contribution**: Applies generative pretraining (similar to LLMs) to industrial-scale user behavior data (credit card transactions).
+- **Relevance**: Proves that the &#34;Attention is All You Need&#34; paradigm (generative pretraining + attention) is directly applicable to non-language internet datasets.
+
+### 5. On Online Attention Dynamics (2022)
+- **Authors**: M. Castaldo, P. Frasca, T. Venturini
+- **Key Contribution**: A review of collective attention dynamics and the need for mathematical modeling of content dissemination.
+- **Relevance**: Establishes the historical context of attention research on the internet.
+
+## Common Methodologies
+- **Attention Mechanisms**: Transformer-based attention (scaled dot-product), Linear Attention (for efficiency), Gated Attention.
+- **Game Theory**: Evolutionary games to model provider-consumer feedback loops.
+- **Sequential Modeling**: Treating user internet behavior (clicks, purchases, views) as a sequence similar to tokens in a sentence.
+
+## Standard Baselines
+- **Recommendation**: SASRec, Bert4Rec, GRU4Rec.
+- **Ranking**: LambdaMART, Deep Interest Network (DIN).
+- **Attention Models**: Standard Transformer, Mamba (as a competitor for long sequences).
+
+## Evaluation Metrics
+- **Technical**: NDCG, Hit Rate, AUC, Click-Through Rate (CTR).
+- **Economic**: Attention Capacity (sigma), Attentional Agency (Push/Pull scores).
+
+## Datasets in the Literature
+- **MovieLens (ML-1M, ML-20M)**: Standard for recommendation.
+- **Criteo**: Standard for CTR prediction.
+- **Baidu-ULTR**: Industrial scale user behavior logs.
+- **Tmall / Amazon**: E-commerce sequential behavior.
+
+## Recommendations for Our Experiment
+1. **Primary Dataset**: Use MovieLens for baseline recommendation and Criteo for CTR analysis.
+2. **Model to Adapt**: Use the RecGRELA or PANTHER architecture as a technical implementation of the attention mechanism.
+3. **Simulation**: Implement the Chujyo et al. (2026) model to simulate how different &#34;attention mechanisms&#34; (e.g., higher discriminability) affect the co-evolution of content quality.
+
+
+════════════════════════════════════════════════════════════════════════════════
+                          PAPER REQUIREMENTS
+════════════════════════════════════════════════════════════════════════════════
+
+Generate a complete academic paper with the following structure:
+
+1. TITLE
+   - Clear, specific, informative
+   - Should convey main finding or contribution
+
+2. AUTHOR
+   - Use this exact author line in the \author{} block: Qianyi Li and NeuriCo
+
+3. ABSTRACT (150-250 words)
+   - Problem statement
+   - Approach
+   - Key results
+   - Significance
+
+4. INTRODUCTION
+   - Research problem and motivation
+   - Gap in existing work
+   - Our contribution (be specific)
+   - Paper organization
+
+5. RELATED WORK
+   - Organized by theme/approach
+   - Position our work relative to prior work
+   - Cite papers from literature review
+
+6. METHODOLOGY
+   - Clear description of approach
+   - Experimental setup
+   - Datasets used
+   - Evaluation metrics
+   - Baselines
+
+7. RESULTS
+   - Present results with tables and figures
+   - Statistical analysis
+   - Comparison to baselines
+   - Ablation studies (if applicable)
+
+8. DISCUSSION
+   - Interpretation of results
+   - Limitations
+   - Broader implications
+
+9. CONCLUSION
+   - Summary of contributions
+   - Key findings
+   - Future work
+
+10. REFERENCES
+   - BibTeX format
+   - All cited papers
+
+════════════════════════════════════════════════════════════════════════════════
+                          OUTPUT FORMAT
+════════════════════════════════════════════════════════════════════════════════
+
+Create a MODULAR LaTeX project with the following directory structure:
+
+paper_draft/
+├── main.tex              # Main file that imports all sections
+├── references.bib        # BibTeX references
+├── sections/
+│   ├── abstract.tex      # Abstract content
+│   ├── introduction.tex  # Introduction section
+│   ├── related_work.tex  # Related work section
+│   ├── methodology.tex   # Methodology section
+│   ├── results.tex       # Results section
+│   ├── discussion.tex    # Discussion section
+│   └── conclusion.tex    # Conclusion section
+├── figures/              # Directory for any generated figures
+├── tables/               # Directory for complex standalone tables
+└── appendix/             # Directory for appendix sections (if needed)
+
+INSTRUCTIONS:
+1. First, create the directory structure above (mkdir -p paper_draft/sections paper_draft/figures paper_draft/tables paper_draft/appendix)
+2. Write main.tex using the EXACT preamble for NEURIPS:
+
+   \documentclass{article}
+   \usepackage[final]{neurips_2025}  % NEURIPS style (neurips_2025.sty is in paper_draft/)
+   \usepackage[hidelinks]{hyperref}  % REQUIRED: clickable links
+   \usepackage{booktabs}  % REQUIRED: professional tables
+   \usepackage{graphicx}
+   \usepackage{amsmath,amssymb}
+
+   % Import command files
+   \input{commands/math}
+   \input{commands/general}
+   \input{commands/macros}
+
+   % Use this bibliography style:
+   \bibliographystyle{plainnat}
+
+   \author{Qianyi Li and NeuriCo}
+
+   - Use \input{sections/...} to include each section
+   - Use \bibliography{references} for references
+3. Write each section file with COMPLETE content (no placeholders)
+4. Each section file should include its \section{} command
+5. Write references.bib with all citations in BibTeX format
+6. After writing all files, compile the paper:
+   cd paper_draft && pdflatex -interaction=nonstopmode main.tex && bibtex main && pdflatex -interaction=nonstopmode main.tex && pdflatex -interaction=nonstopmode main.tex
+
+This modular structure allows humans to easily:
+- Edit individual sections without navigating a large file
+- Track changes per section
+- Reuse sections across different paper versions
+
+════════════════════════════════════════════════════════════════════════════════
+                          QUALITY REQUIREMENTS
+════════════════════════════════════════════════════════════════════════════════
+
+- Academic tone throughout
+- All claims must be supported by data from the experiment report
+- Proper citations using \cite{} commands
+- Clear figures and tables with proper captions
+- NO placeholder text - every section must have real content
+- The paper MUST compile without errors
+- If compilation fails, debug and fix the LaTeX errors
+
+════════════════════════════════════════════════════════════════════════════════
+                          LAB WRITING STYLE
+════════════════════════════════════════════════════════════════════════════════
+
+Follow these lab-specific conventions to match our paper style:
+
+1. LANGUAGE STYLE:
+   - Use active voice: "We propose", "We examine", "We focus on"
+   - Be direct and confident: "Our main question is...", "We hypothesize that..."
+   - State things clearly and simply - prefer plain language over jargon
+   - Use bold questions as paragraph organizers: {\bf what is X?}
+   - Include specific quantitative claims: "8.97% over baseline"
+   - Avoid fancy wording: "utilize" → "use", "facilitate" → "help"
+
+2. INTRODUCTION STRUCTURE:
+   - Engaging hook (get to the point quickly)
+   - Problem importance
+   - Gap identification
+   - Your approach with method figure reference
+   - Quantitative preview of results
+   - Contribution bullets (3-4 items, action verbs)
+
+3. CONTRIBUTION LISTS:
+   \begin{itemize}[leftmargin=*,itemsep=0pt,topsep=0pt]
+       \item We propose...
+       \item We conduct...
+       \item We complement...
+   \end{itemize}
+
+4. MODULAR COMMANDS STRUCTURE:
+   Command templates are pre-copied to paper_draft/commands/:
+   - math.tex: Math notation macros
+   - general.tex: Formatting macros
+   - macros.tex: Project-specific term definitions (customize this for your paper)
+
+   In main.tex, include:
+   \input{commands/math}
+   \input{commands/general}
+   \input{commands/macros}
+
+5. REFERENCE CONVENTIONS:
+   Use reference macros from math.tex:
+   - \figref{fig:name} for "figure 1" (lowercase, in-sentence)
+   - \Figref{fig:name} for "Figure 1" (capitalized, start of sentence)
+   - \secref{sec:name} for "section 2"
+
+6. TEXT FORMATTING:
+   - Use \para{Header text} for bold paragraph headers
+   - Define method/dataset names with \textsc and \xspace:
+     \newcommand{\methodname}{\textsc{MethodName}\xspace}
+
+7. TABLE FORMATTING:
+   - Use booktabs package (no vertical lines)
+   - Use \resizebox{\textwidth}{!}{...} for wide tables
+   - Use @{} to remove padding at table edges
+   - Use \cmidrule(lr){x-y} for sub-headers
+   - Use \textsc{} for dataset/method names in headers
+   - Bold best results with {\bf ...}
+
+8. FIGURE FORMATTING:
+   - Use 0.32\textwidth for 3-column subfigures
+   - Use 0.95\linewidth for full-width figures
+   - Use \input{figures/legend} for shared legends
+   - Write self-contained captions explaining key observations
+
+9. RESULTS PRESENTATION:
+   - Define \increase and \decrease for colored arrows (green up, red down)
+   - Bold best results in tables
+   - Report confidence intervals when available
+
+10. ALGORITHM STYLING:
+    - Use algpseudocode with [noend]
+    - Use \triangleright for comments
+
+11. HYPERLINKS (REQUIRED):
+    - Always use \usepackage[hidelinks]{hyperref} or with colored links
+    - All citations, section refs, figure refs, table refs must be clickable
+    - This is essential for reader navigation
+
+════════════════════════════════════════════════════════════════════════════════
+                          WORKFLOW: REVIEW AND REFLECT
+════════════════════════════════════════════════════════════════════════════════
+
+Before calling finish, you MUST complete these review steps:
+
+1. REVIEW RESOURCES (at the start):
+   - Read .gemini/skills/paper-writer/SKILL.md for detailed guidance
+   - Study templates/paper_writing/lab_style_guide.md for style conventions
+   - Browse paper_examples/ for formatting and language patterns
+
+2. SELF-REFLECTION (before finishing):
+   After writing all sections, review your work against these criteria:
+
+   LANGUAGE CHECK:
+   - [ ] Is the writing clear and jargon-free?
+   - [ ] Are claims specific with quantitative support?
+   - [ ] Is active voice used throughout?
+
+   FORMATTING CHECK:
+   - [ ] Does main.tex include \input{commands/math}, \input{commands/general}, \input{commands/macros}?
+   - [ ] Is hyperref package included for clickable references?
+   - [ ] Do tables use booktabs (no vertical lines)?
+   - [ ] Are best results bolded in tables?
+   - [ ] Are figures/tables properly captioned?
+
+   STRUCTURE CHECK:
+   - [ ] Does introduction follow: hook → importance → gap → approach → preview → contributions?
+   - [ ] Are contribution bullets specific with action verbs?
+   - [ ] Does the paper compile without errors?
+
+3. FIX ISSUES:
+   - Address any issues found in the self-reflection
+   - Re-compile and verify the PDF looks correct
+
+Only after completing this review should you consider the paper finished.

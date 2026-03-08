@@ -1,0 +1,18 @@
+{
+  "timestamp": "2026-03-08T09:15:30.188367",
+  "python": "3.12.8 (main, Dec 19 2024, 14:33:20) [Clang 18.1.8 ]",
+  "torch": "2.10.0+cu128",
+  "cuda_available": true,
+  "gpu_info": [
+    {
+      "index": 0,
+      "name": "NVIDIA GeForce RTX 3090",
+      "memory_gb": 23.6
+    },
+    {
+      "index": 1,
+      "name": "NVIDIA GeForce RTX 3090",
+      "memory_gb": 23.6
+    }
+  ]
+}

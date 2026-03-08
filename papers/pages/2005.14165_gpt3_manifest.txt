@@ -1,0 +1,30 @@
+PDF: papers/2005.14165_gpt3.pdf
+Total pages: 75
+Pages per chunk: 3
+
+Chunks:
+  2005.14165_gpt3_chunk_001.pdf: pages 1-3
+  2005.14165_gpt3_chunk_002.pdf: pages 4-6
+  2005.14165_gpt3_chunk_003.pdf: pages 7-9
+  2005.14165_gpt3_chunk_004.pdf: pages 10-12
+  2005.14165_gpt3_chunk_005.pdf: pages 13-15
+  2005.14165_gpt3_chunk_006.pdf: pages 16-18
+  2005.14165_gpt3_chunk_007.pdf: pages 19-21
+  2005.14165_gpt3_chunk_008.pdf: pages 22-24
+  2005.14165_gpt3_chunk_009.pdf: pages 25-27
+  2005.14165_gpt3_chunk_010.pdf: pages 28-30
+  2005.14165_gpt3_chunk_011.pdf: pages 31-33
+  2005.14165_gpt3_chunk_012.pdf: pages 34-36
+  2005.14165_gpt3_chunk_013.pdf: pages 37-39
+  2005.14165_gpt3_chunk_014.pdf: pages 40-42
+  2005.14165_gpt3_chunk_015.pdf: pages 43-45
+  2005.14165_gpt3_chunk_016.pdf: pages 46-48
+  2005.14165_gpt3_chunk_017.pdf: pages 49-51
+  2005.14165_gpt3_chunk_018.pdf: pages 52-54
+  2005.14165_gpt3_chunk_019.pdf: pages 55-57
+  2005.14165_gpt3_chunk_020.pdf: pages 58-60
+  2005.14165_gpt3_chunk_021.pdf: pages 61-63
+  2005.14165_gpt3_chunk_022.pdf: pages 64-66
+  2005.14165_gpt3_chunk_023.pdf: pages 67-69
+  2005.14165_gpt3_chunk_024.pdf: pages 70-72
+  2005.14165_gpt3_chunk_025.pdf: pages 73-75

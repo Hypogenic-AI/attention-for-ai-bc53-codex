@@ -1,0 +1,27 @@
+{
+  "success": true,
+  "stages": {
+    "resource_finder": {
+      "success": true,
+      "completion_marker": "/workspaces/attention-for-ai-bc53-codex/.resource_finder_complete",
+      "outputs": {
+        "literature_review": "/workspaces/attention-for-ai-bc53-codex/literature_review.md",
+        "resources_catalog": "/workspaces/attention-for-ai-bc53-codex/resources.md",
+        "papers_dir": "/workspaces/attention-for-ai-bc53-codex/papers",
+        "datasets_dir": "/workspaces/attention-for-ai-bc53-codex/datasets",
+        "code_dir": "/workspaces/attention-for-ai-bc53-codex/code"
+      },
+      "log_file": "/workspaces/attention-for-ai-bc53-codex/logs/resource_finder_gemini.log",
+      "transcript_file": "/workspaces/attention-for-ai-bc53-codex/logs/resource_finder_gemini_transcript.jsonl",
+      "elapsed_time": 1139.0445144176483
+    },
+    "experiment_runner": {
+      "success": true,
+      "return_code": 0,
+      "elapsed_time": 499.11932706832886,
+      "log_file": "/workspaces/attention-for-ai-bc53-codex/logs/execution_gemini.log",
+      "transcript_file": "/workspaces/attention-for-ai-bc53-codex/logs/execution_gemini_transcript.jsonl"
+    }
+  },
+  "work_dir": "/workspaces/attention-for-ai-bc53-codex"
+}
