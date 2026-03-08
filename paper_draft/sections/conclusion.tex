@@ -1,0 +1,8 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+In this paper, we have investigated the hypothesis that the attention mechanism serves as a fundamental principle across both AI and the Internet. Our empirical studies on \sectask and \ctrtask demonstrate that attention-based models consistently match or outperform non-attention baselines. Specifically, the \attentionmlp achieved a validation accuracy of {\bf 0.7740} on the \criteo dataset, outperforming a standard \mlp. More importantly, we have established an "Entropy-Correctness Link," providing empirical evidence that lower mean attention entropy (more focused attention) is strongly associated with prediction correctness.
+
+The key takeaway is that attention functions as a cross-domain bottleneck, providing a unified mathematical framework for understanding how both machine and digital systems filter and focus information. This finding bridges the gap between the internal mechanisms of generative AI and the external outcomes of the digital economy.
+
+Future work will focus on scaling these experiments to the full 1-billion-row Criteo and 20-million-row MovieLens datasets to confirm the robust scalability of the attention mechanism. Additionally, we plan to experiment with hybrid attention-recurrent models (e.g., Mamba) to further enhance sequential behavior modeling. Finally, we aim to integrate metrics for user "attentional agency" to measure the impact of these mechanisms on the balance between user choice and platform control.

@@ -8,13 +8,13 @@ Understanding attention as a cross-domain principle has profound implications fo
 
 Despite the proliferation of attention-based techniques in specific silos such as recommendation \cite{kang2018self, sun2019bert4rec} and click-through rate (CTR) prediction \cite{zhou2018deep}, there is a lack of integrated empirical studies that test this unified framing across diverse tasks. Specifically, the relationship between the internal mathematical properties of attention mechanisms (e.g., entropy) and the external predictive performance on Internet-specific tasks has not been rigorously established.
 
-In this work, we investigate whether attention functions as a unifying bottleneck across AI and Internet systems. We compare attention-based architectures against non-attention baselines in two representative tasks: sequential recommendation using MovieLens and CTR prediction using the Criteo dataset. Our approach focuses on not just the raw performance metrics but also the underlying attention concentration patterns. We demonstrate that attention-based models are not only competitive but consistently provide superior regularization and predictive accuracy in these high-dimensional domains.
+In this work, we investigate whether attention functions as a unifying bottleneck across AI and Internet systems. We compare attention-based architectures against non-attention baselines in two representative tasks: \sectask using MovieLens and \ctrtask using the Criteo dataset. Our approach focuses on not just the raw performance metrics but also the underlying attention concentration patterns. We demonstrate that attention-based models are not only competitive but consistently provide superior regularization and predictive accuracy in these high-dimensional domains.
 
 Our experiments reveal a significant performance gain: the Attention-based MLP achieves a validation accuracy of {\bf 0.7740} on the Criteo dataset, outperforming a standard MLP by {\bf 3.03\%} (0.7512). Furthermore, our analysis of attention entropy provides a measurable bridge between mechanism and outcome, showing that more concentrated attention (lower entropy) is strongly associated with correct predictions (1.4107 vs. 1.4285).
 
 Our main contributions are as follows:
 \begin{itemize}[leftmargin=*,itemsep=0pt,topsep=0pt]
-    \item We demonstrate that the attention-based paradigm consistently matches or outperforms non-attention baselines in critical Internet tasks, specifically sequential recommendation and CTR prediction.
+    \item We demonstrate that the attention-based paradigm consistently matches or outperforms non-attention baselines in critical Internet tasks, specifically \sectask and \ctrtask.
     \item We provide empirical evidence of the "Entropy-Correctness Link," showing that lower attention entropy correlates with higher prediction accuracy across different tasks.
     \item We propose a unified framing of attention as a cross-domain bottleneck, connecting the architectural choices of generative AI with the traffic allocation behavior of digital ecosystems.
 \end{itemize}

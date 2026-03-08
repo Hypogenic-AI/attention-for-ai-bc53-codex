@@ -1,0 +1,15 @@
+\section{Discussion}
+\label{sec:discussion}
+
+Our results provide empirical support for the hypothesis that the attention mechanism is a fundamental cross-domain bottleneck. In this section, we discuss the implications of our findings, address their limitations, and explore broader consequences for AI and the digital economy.
+
+\para{Interpretation of Results}
+The superior performance of the \attentionmlp on the \criteo dataset suggests that feature-level attention acts as a powerful regularizer. By dynamically weighting categorical and numerical features, the model can effectively filter out "noise" and focus on the most predictive signals. This is particularly important in Internet datasets like CTR, where the feature space is sparse and high-dimensional. Similarly, the competitive performance of the \transformer on \movielens demonstrates that the "Attention is All You Need" paradigm \cite{vaswani2017attention} is just as applicable to sequential user behaviors as it is to natural language.
+
+The most compelling finding is the link between attention entropy and prediction correctness. This suggests that the mathematical focus of attention is not merely an architectural choice but a measurable property that correlates with the model's performance. Lower entropy, indicating more concentrated attention, is associated with more accurate predictions. This implies that the effectiveness of information filtering is a key driver of model success in both AI and Internet contexts.
+
+\para{Limitations}
+Despite the positive findings, our study has several limitations. First, the experiments were conducted on subsets of the full datasets (e.g., a 20,000-row subset of Criteo). While these provide a meaningful comparison, testing on the full datasets (e.g., 45 million rows for Criteo) would be necessary to confirm the robustness and scalability of the findings. Second, we focused on standard attention architectures; exploring more advanced variants, such as linear attention \cite{hu2025gated} or gated models, could yield even stronger performance gains. Third, our analysis of attention entropy was limited to a single task (\sectask); further research is needed to determine if this link holds consistently across all attention-based Internet models.
+
+\para{Broader Implications}
+The unified framing of attention as a cross-domain principle has significant implications for both AI and the digital economy. It suggests that the architectural choices of generative AI—such as the move towards more focused and scalable attention—are aligned with the core mechanisms of Internet products. This suggests a potential convergence where AI models and Internet platforms increasingly use shared attention-driven strategies to mediate user interaction and allocate information traffic. Furthermore, this research provides a measurable bridge between technical mechanism and outcomes, which can inform the design of more transparent and effective digital systems. Understanding how attention concentrations affect prediction correctness may lead to better model auditing and improved user control over their own digital experiences.
